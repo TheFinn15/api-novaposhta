@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {ApiAreas} from "../types/address";
-import {WayBillMethodProperties, WayBillRequest, WayBillResponse} from "../types/waybill";
+import {WayBillMethodProperties, WayBillRequest, ListWayBillResponse, TrackingWayBillResponse} from "../types/waybill";
 import {ApiRequest, ApiResponse} from "../types";
 
 export class ApiNovaPoshta {
@@ -25,9 +25,15 @@ export class ApiNovaPoshta {
     return resp.data;
   }
 
-  async getListWayBill(opts: WayBillMethodProperties) {
-    const data: WayBillRequest = this.getRequestData('InternetDocument', 'getDocumentList', opts);
+  async getListWayBill(opts?: WayBillMethodProperties) {
+    const data: WayBillRequest = this.getRequestData('InternetDocument', 'getDocumentList', opts ?? {});
 
-    return (await axios.post(`${this.hostUrl}${data.calledMethod}`)).data as ApiResponse<WayBillResponse>;
+    return (await axios.post(`${this.hostUrl}${data.calledMethod}`, data)).data as ApiResponse<ListWayBillResponse>;
+  }
+
+  async getTrackingParcel(opts: WayBillMethodProperties) {
+    const data: WayBillRequest = this.getRequestData('TrackingDocument', 'getStatusDocuments', opts);
+
+    return (await axios.post(`${this.hostUrl}${data.calledMethod}`, data)).data as ApiResponse<TrackingWayBillResponse>
   }
 }
