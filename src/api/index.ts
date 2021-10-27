@@ -28,6 +28,6 @@ export class ApiNovaPoshta {
   async getListWayBill(opts: WayBillMethodProperties) {
     const data: WayBillRequest = this.getRequestData('InternetDocument', 'getDocumentList', opts);
 
-    return (await axios.post(`${this.hostUrl}${data.calledMethod}`)).data as WayBillResponse;
+    return (await axios.post(`${this.hostUrl}${data.calledMethod}`)).data as ApiResponse<WayBillResponse>;
   }
 }
