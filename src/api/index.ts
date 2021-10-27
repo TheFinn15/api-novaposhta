@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig, Method } from 'axios';
 import {ApiAreas} from "../types/address";
 import {WayBillMethodProperties, WayBillRequest, ListWayBillResponse, TrackingWayBillResponse} from "../types/waybill";
 import {ApiRequest, ApiResponse} from "../types";
@@ -17,23 +17,34 @@ export class ApiNovaPoshta {
     };
   }
 
+  private async getRequest<T>(method: Method, data: ApiRequest<T>, useModelName = false) {
+    let url = '';
+
+    if (useModelName) url = `${this.hostUrl}${data.modelName}/${data.calledMethod}`;
+    else url = `${this.hostUrl}${data.calledMethod}`;
+    
+    return (await axios({
+      method,
+      url,
+      data: data
+    })).data;
+  }
+
   async getAreas(): Promise<ApiAreas[]> {
     const data = this.getRequestData('Address', 'getAreas');
 
-    const resp = (await axios.post(`${this.hostUrl}${data.modelName}/${data.calledMethod}`, data)).data as ApiResponse<ApiAreas>;
-
-    return resp.data;
+    return await this.getRequest('post', data, true);
   }
 
   async getListWayBill(opts?: WayBillMethodProperties) {
     const data: WayBillRequest = this.getRequestData('InternetDocument', 'getDocumentList', opts ?? {});
 
-    return (await axios.post(`${this.hostUrl}${data.calledMethod}`, data)).data as ApiResponse<ListWayBillResponse>;
+    return await this.getRequest('post', data) as ApiResponse<ListWayBillResponse>;
   }
 
   async getTrackingParcel(opts: WayBillMethodProperties) {
     const data: WayBillRequest = this.getRequestData('TrackingDocument', 'getStatusDocuments', opts);
 
-    return (await axios.post(`${this.hostUrl}${data.calledMethod}`, data)).data as ApiResponse<TrackingWayBillResponse>
+    return await this.getRequest('post', data) as ApiResponse<TrackingWayBillResponse>;
   }
 }
