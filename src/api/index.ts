@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, Method } from 'axios';
-import {ApiAreas} from "../types/address";
+import {ApiAreas, ApiCitiesProperties, ApiCitiesResponse} from "../types/address";
 import {WayBillMethodProperties, WayBillRequest, ListWayBillResponse, TrackingWayBillResponse} from "../types/waybill";
 import {ApiRequest, ApiResponse} from "../types";
 
@@ -17,34 +17,40 @@ export class ApiNovaPoshta {
     };
   }
 
-  private async getRequest<T>(method: Method, data: ApiRequest<T>, useModelName = false) {
+  private async getRequest<T>(method: Method, data: ApiRequest<any>, useModelName = false) {
     let url = '';
 
     if (useModelName) url = `${this.hostUrl}${data.modelName}/${data.calledMethod}`;
     else url = `${this.hostUrl}${data.calledMethod}`;
-    
+
     return (await axios({
       method,
       url,
       data: data
-    })).data;
+    })).data as ApiResponse<T>;
   }
 
-  async getAreas(): Promise<ApiAreas[]> {
+  async getAreas() {
     const data = this.getRequestData('Address', 'getAreas');
 
-    return await this.getRequest('post', data, true);
+    return await this.getRequest<ApiAreas>('post', data, true);
   }
 
   async getListWayBill(opts?: WayBillMethodProperties) {
     const data: WayBillRequest = this.getRequestData('InternetDocument', 'getDocumentList', opts ?? {});
 
-    return await this.getRequest('post', data) as ApiResponse<ListWayBillResponse>;
+    return await this.getRequest<ListWayBillResponse>('post', data);
   }
 
   async getTrackingParcel(opts: WayBillMethodProperties) {
     const data: WayBillRequest = this.getRequestData('TrackingDocument', 'getStatusDocuments', opts);
 
-    return await this.getRequest('post', data) as ApiResponse<TrackingWayBillResponse>;
+    return await this.getRequest<TrackingWayBillResponse>('post', data);
+  }
+
+  async getCities(opts: ApiCitiesProperties) {
+    const data: ApiRequest<ApiCitiesProperties> = this.getRequestData('AddressGeneral', 'getSettlements', opts);
+
+    return await this.getRequest<ApiCitiesResponse>('post', data, true);
   }
 }

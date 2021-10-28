@@ -66,7 +66,7 @@ export interface TrackingWayBillResponse {
   Redelivery: number;
   RedeliverySum: number;
   RedeliveryNum: string;
-  RedeliveryPayer: WayBillPayerType;
+  RedeliveryPayer: WayBillRedeliveryType;
   OwnerDocumentType: string;
   LastCreatedOnTheBasisDocumentType: string;
   LastCreatedOnTheBasisPayerType: string;
@@ -91,7 +91,7 @@ export interface TrackingWayBillResponse {
   CitySender: string;
   CityRecipent: string;
   WarehouseRecipient: string;
-  CounterpartyType: WayBillPayerType;
+  CounterpartyType: WayBillPartyType;
   AfterpaymentOnGoodsCost: string;
   ServiceType: string;
   UndeliveryReasonsSubtypeDescription: string;
