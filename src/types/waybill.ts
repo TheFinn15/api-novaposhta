@@ -1,4 +1,4 @@
-import {ApiRequest} from "./index";
+import {ApiRequestBody} from "./index";
 
 export enum WayBillFullList {
   PerPage = 0,
@@ -39,7 +39,7 @@ export interface WayBillMethodProperties {
   Documents?: WayBillDocument[];
 }
 
-export interface WayBillRequest extends ApiRequest<WayBillMethodProperties>{}
+export interface WayBillRequest extends ApiRequestBody<WayBillMethodProperties>{}
 
 export interface ListWayBillResponse {
   Ref: string;

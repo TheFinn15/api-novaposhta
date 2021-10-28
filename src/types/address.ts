@@ -1,4 +1,4 @@
-import {ApiRequest} from "./index";
+import {ApiRequestBody} from "./index";
 
 export enum CityTypeRu {
   Village = 'село',
@@ -12,11 +12,22 @@ export enum CityType {
   Settlement = 'пгт'
 }
 
-export interface ApiAreas {
+export enum CityTypeCode {
+  City = 'м.',
+  Village = 'с.'
+}
+
+export enum StreetType {
+  Street= 'вул.',
+  Boulevard = 'бул.',
+  Avenue = 'просп.'
+}
+
+export interface ApiAreasResponse {
   Ref: string;
   AreasCenter: string;
   DescriptionRu: string;
-  Description: String;
+  Description: string;
 }
 
 export interface ApiCitiesProperties {
@@ -26,8 +37,6 @@ export interface ApiCitiesProperties {
   Warehouse?: string;
   Page?: string;
 }
-
-export interface ApiCitiesRequest extends ApiRequest<ApiCitiesProperties>{}
 
 export interface ApiCitiesResponse {
   Ref: string;
@@ -55,4 +64,45 @@ export interface ApiCitiesResponse {
   Delivery7: string;
   IndexCOATSU1: string;
   Warehouse: string;
+}
+
+export interface ApiSearchCityProperties {
+  CityName: string;
+  Limit: number;
+}
+
+export interface ApiSearchCityAddress {
+  Warehouses: number;
+  MainDescription: string;
+  Area: string;
+  Region: string;
+  SettlementTypeCode: CityTypeCode;
+  Ref: string;
+  DeliveryCity: string;
+  AddressDeliveryAllowed: boolean;
+  StreetsAvailability: boolean;
+  Present: string;
+}
+
+export interface ApiSearchResponse<T> {
+  TotalCount: number;
+  Addresses: T[];
+}
+
+export interface ApiSearchStreetProperties {
+  StreetName: string;
+  SettlementRef: string;
+  Limit: number;
+}
+
+export interface ApiSearchStreetResponse {
+  SettlementRef: string;
+  SettlementStreetRef: string;
+  SettlementStreetDescription: string;
+  SettlementStreetDescriptionRu: string;
+  Present: string;
+  StreetsType: string;
+  StreetsTypeDescription: StreetType;
+  Location: number[];
+
 }

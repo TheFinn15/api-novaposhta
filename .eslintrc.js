@@ -32,7 +32,7 @@ module.exports = {
     // vue-eslint-parser
     'plugin:vue/recommended',
 
-    '@nuxtjs/eslint-config-typescript',
+    '@nuxtjs/eslint-middleware-typescript',
     'plugin:nuxt/recommended',
     // Next lines to disable conflicting rules with Prettier
     // Must be last line
@@ -203,7 +203,7 @@ module.exports = {
       },
     },
     {
-      files: ['nuxt.config.ts'],
+      files: ['nuxt.middleware.ts'],
       rules: {
         'max-lines': 0,
         'max-lines-per-function': 0,
