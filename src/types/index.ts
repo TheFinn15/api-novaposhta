@@ -3,7 +3,9 @@ import {Method} from "axios";
 export interface ApiRequestBody<T> {
   apiKey: string;
   modelName: string;
+  system?: string;
   calledMethod: string;
+  language?: 'ru' | 'ua';
   methodProperties: T;
 }
 
@@ -23,6 +25,6 @@ export interface ApiRequestOptions<T> {
   model: string;
   apiMethod: string;
   requestMethod: Method;
-  useModelName: boolean;
   additionalOpts?: T;
+  nameSystem?: string;
 }

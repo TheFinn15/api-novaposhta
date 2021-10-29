@@ -6,7 +6,11 @@ import {
   ApiSearchCityProperties,
   ApiSearchResponse,
   ApiSearchStreetProperties,
-  ApiSearchStreetResponse
+  ApiSearchStreetResponse,
+  ApiWarehouseProperties,
+  ApiWarehouseResponse,
+  ApiWarehouseStreetProperties,
+  ApiWarehouseStreetResponse
 } from "../types/address";
 import {ApiConfigure} from "../middleware";
 
@@ -18,7 +22,6 @@ export class ApiAddress {
       model: 'AddressGeneral',
       apiMethod: 'getSettlements',
       requestMethod: 'post',
-      useModelName: true,
       additionalOpts: properties
     });
   }
@@ -28,7 +31,6 @@ export class ApiAddress {
       model: 'Address',
       apiMethod: 'getAreas',
       requestMethod: 'post',
-      useModelName: true
     });
   }
 
@@ -37,7 +39,6 @@ export class ApiAddress {
       model: 'Address',
       apiMethod: 'searchSettlements',
       requestMethod: 'post',
-      useModelName: false,
       additionalOpts: properties,
     });
   }
@@ -47,7 +48,24 @@ export class ApiAddress {
       model: 'Address',
       apiMethod: 'searchSettlementStreets',
       requestMethod: 'post',
-      useModelName: false,
+      additionalOpts: properties,
+    });
+  }
+
+  async getWarehouses(properties: ApiWarehouseProperties) {
+    return await this.config.generateRequest<ApiWarehouseResponse, ApiWarehouseProperties>({
+      model: 'AddressGeneral',
+      apiMethod: 'getWarehouses',
+      requestMethod: 'post',
+      additionalOpts: properties,
+    });
+  }
+
+  async getWarehouseStreet(properties: ApiWarehouseStreetProperties) {
+    return await this.config.generateRequest<ApiWarehouseStreetResponse, ApiWarehouseProperties>({
+      model: 'Address',
+      apiMethod: 'getStreet',
+      requestMethod: 'post',
       additionalOpts: properties,
     });
   }

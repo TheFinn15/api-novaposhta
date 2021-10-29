@@ -20,7 +20,8 @@ export enum CityTypeCode {
 export enum StreetType {
   Street= 'вул.',
   Boulevard = 'бул.',
-  Avenue = 'просп.'
+  Avenue = 'просп.',
+  HighWay = 'шосе'
 }
 
 export interface ApiAreasResponse {
@@ -90,9 +91,9 @@ export interface ApiSearchResponse<T> {
 }
 
 export interface ApiSearchStreetProperties {
-  StreetName: string;
-  SettlementRef: string;
-  Limit: number;
+  StreetName?: string;
+  SettlementRef?: string;
+  Limit?: number;
 }
 
 export interface ApiSearchStreetResponse {
@@ -104,5 +105,86 @@ export interface ApiSearchStreetResponse {
   StreetsType: string;
   StreetsTypeDescription: StreetType;
   Location: number[];
+}
 
+export interface ApiWarehouseLimitsWeight {
+  Width: number;
+  Height: number;
+  Length: number;
+}
+
+export interface ApiWarehouseWeek {
+  Monday: string;
+  Tuesday: string;
+  Wednesday: string;
+  Thursday: string;
+  Friday: string;
+  Saturday: string;
+  Sunday: string;
+}
+
+export interface ApiWarehouseProperties {
+  CityName?: string;
+  CityRef?: string;
+  Page?: number;
+  Limit?: number;
+  Language?: string;
+  FindByString?: string;
+}
+
+export interface ApiWarehouseResponse {
+  SiteKey: string;
+  Description: string;
+  DescriptionRu: string;
+  ShortAddress: string;
+  ShortAddressRu: string;
+  Phone: string;
+  TypeOfWarehouse: string;
+  Ref: string;
+  Number: string;
+  CityRef: string;
+  CityDescription: string;
+  CityDescriptionRu: string;
+  SettlementRef: string;
+  SettlementDescription: string;
+  SettlementAreaDescription: string;
+  SettlementRegionsDescription: string;
+  SettlementTypeDescription: string;
+  SettlementTypeDescriptionRu: string;
+  Longitude: string;
+  Latitude: string;
+  PostFinance: string;
+  BicycleParking: string;
+  PaymentAccess: string;
+  POSTerminal: string;
+  InternationalShipping: string;
+  SelfServiceWorkplacesCount: string;
+  TotalMaxWeightAllowed: string;
+  PlaceMaxWeightAllowed: string;
+  SendingLimitationsOnDimensions: ApiWarehouseLimitsWeight;
+  ReceivingLimitationsOnDimensions: ApiWarehouseLimitsWeight;
+  Reception: ApiWarehouseWeek;
+  Delivery: ApiWarehouseWeek;
+  Schedule: ApiWarehouseWeek;
+  DistrictCode: string;
+  WarehouseStatus: string;
+  WarehouseStatusDate: string;
+  CategoryOfWarehouse: string;
+  Direct: string;
+  RegionCity: string;
+  WarehouseForAgent: string;
+  MaxDeclaredCost: string
+}
+
+export interface ApiWarehouseStreetProperties {
+  CityRef: string;
+  FindByString: string;
+  Page?: number;
+}
+
+export interface ApiWarehouseStreetResponse {
+  Ref: string;
+  Description: string;
+  StreetsTypeRef: string;
+  StreetsType: StreetType;
 }
