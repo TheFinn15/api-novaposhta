@@ -10,9 +10,9 @@ import {
   ApiWarehouseProperties,
   ApiWarehouseResponse,
   ApiWarehouseStreetProperties,
-  ApiWarehouseStreetResponse
-} from "../types/address";
-import {ApiConfigure} from "../middleware";
+  ApiWarehouseStreetResponse,
+} from '../types/address';
+import { ApiConfigure } from '../middleware';
 
 export class ApiAddress {
   constructor(private apiUrl: string, private config: ApiConfigure) {}
@@ -22,7 +22,7 @@ export class ApiAddress {
       model: 'AddressGeneral',
       apiMethod: 'getSettlements',
       requestMethod: 'post',
-      additionalOpts: properties
+      additionalOpts: properties,
     });
   }
 
@@ -35,7 +35,10 @@ export class ApiAddress {
   }
 
   async searchCity(properties: ApiSearchCityProperties) {
-    return await this.config.generateRequest<ApiSearchResponse<ApiSearchCityAddress>, ApiSearchCityProperties>({
+    return await this.config.generateRequest<
+      ApiSearchResponse<ApiSearchCityAddress>,
+      ApiSearchCityProperties
+    >({
       model: 'Address',
       apiMethod: 'searchSettlements',
       requestMethod: 'post',
@@ -44,7 +47,10 @@ export class ApiAddress {
   }
 
   async searchStreet(properties: ApiSearchStreetProperties) {
-    return await this.config.generateRequest<ApiSearchResponse<ApiSearchStreetResponse>, ApiSearchStreetProperties>({
+    return await this.config.generateRequest<
+      ApiSearchResponse<ApiSearchStreetResponse>,
+      ApiSearchStreetProperties
+    >({
       model: 'Address',
       apiMethod: 'searchSettlementStreets',
       requestMethod: 'post',

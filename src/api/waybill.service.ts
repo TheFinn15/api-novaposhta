@@ -1,6 +1,7 @@
-import {ApiConfigure} from "../middleware";
+import { ApiConfigure } from '../middleware';
 import {
-  ApiTrackingHistoryProperties, ApiTrackingHistoryResponse,
+  ApiTrackingHistoryProperties,
+  ApiTrackingHistoryResponse,
   ApiTrackingInfoProperties,
   ApiTrackingInfoResponse,
   ListWayBillResponse,
@@ -15,7 +16,7 @@ export class ApiWayBill {
     return await this.config.generateRequest<ListWayBillResponse, WayBillMethodProperties>({
       model: 'InternetDocument',
       apiMethod: 'getDocumentList',
-      requestMethod: "post",
+      requestMethod: 'post',
       additionalOpts: opts ?? undefined,
     });
   }
@@ -24,7 +25,7 @@ export class ApiWayBill {
     return await this.config.generateRequest<TrackingWayBillResponse, WayBillMethodProperties>({
       model: 'TrackingDocument',
       apiMethod: 'getStatusDocuments',
-      requestMethod: "post",
+      requestMethod: 'post',
       additionalOpts: opts,
     });
   }
@@ -33,19 +34,22 @@ export class ApiWayBill {
     return await this.config.generateRequest<ApiTrackingInfoResponse, ApiTrackingInfoProperties>({
       model: 'InternetDocument',
       apiMethod: 'getDocumentsEWMovement',
-      requestMethod: "post",
+      requestMethod: 'post',
       additionalOpts: opts,
-      nameSystem: 'Tracking'
+      nameSystem: 'Tracking',
     });
   }
 
   async getTrackingHistory(opts: ApiTrackingHistoryProperties) {
-    return await this.config.generateRequest<ApiTrackingHistoryResponse, ApiTrackingHistoryProperties>({
+    return await this.config.generateRequest<
+      ApiTrackingHistoryResponse,
+      ApiTrackingHistoryProperties
+    >({
       model: 'TrackingDocumentGeneral',
       apiMethod: 'getDocumentTrackingHistory',
       requestMethod: 'post',
       additionalOpts: opts,
-      nameSystem: 'Tracking'
-      });
+      nameSystem: 'Tracking',
+    });
   }
 }

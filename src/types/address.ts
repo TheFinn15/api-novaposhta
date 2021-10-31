@@ -1,27 +1,35 @@
-import {ApiRequestBody} from "./index";
+export type AddressModelType = 'Address' | 'AddressGeneral';
+
+export type AddressApiMethodType =
+  | 'getStreet'
+  | 'getWarehouses'
+  | 'getSettlements'
+  | 'getAreas'
+  | 'searchSettlements'
+  | 'searchSettlementStreets';
 
 export enum CityTypeRu {
   Village = 'село',
   City = 'город',
-  Settlement = 'пгт'
+  Settlement = 'пгт',
 }
 
 export enum CityType {
   Village = 'село',
   City = 'місто',
-  Settlement = 'пгт'
+  Settlement = 'пгт',
 }
 
 export enum CityTypeCode {
   City = 'м.',
-  Village = 'с.'
+  Village = 'с.',
 }
 
 export enum StreetType {
-  Street= 'вул.',
+  Street = 'вул.',
   Boulevard = 'бул.',
   Avenue = 'просп.',
-  HighWay = 'шосе'
+  HighWay = 'шосе',
 }
 
 export interface ApiAreasResponse {
@@ -173,7 +181,7 @@ export interface ApiWarehouseResponse {
   Direct: string;
   RegionCity: string;
   WarehouseForAgent: string;
-  MaxDeclaredCost: string
+  MaxDeclaredCost: string;
 }
 
 export interface ApiWarehouseStreetProperties {

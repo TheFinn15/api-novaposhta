@@ -1,10 +1,16 @@
-import {Method} from "axios";
+import { Method } from 'axios';
+import { AddressApiMethodType, AddressModelType } from './address';
+import { WayBillApiMethodType, WaybillModelType } from './waybill';
+
+export type ModelType = AddressModelType | WaybillModelType;
+
+export type ApiMethodType = AddressApiMethodType | WayBillApiMethodType;
 
 export interface ApiRequestBody<T> {
   apiKey: string;
-  modelName: string;
+  modelName: ModelType;
   system?: string;
-  calledMethod: string;
+  calledMethod: ApiMethodType;
   language?: 'ru' | 'ua';
   methodProperties: T;
 }
@@ -22,8 +28,8 @@ export interface ApiResponseBody<T> {
 }
 
 export interface ApiRequestOptions<T> {
-  model: string;
-  apiMethod: string;
+  model: ModelType;
+  apiMethod: ApiMethodType;
   requestMethod: Method;
   additionalOpts?: T;
   nameSystem?: string;

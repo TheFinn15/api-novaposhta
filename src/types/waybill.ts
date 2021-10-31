@@ -1,4 +1,6 @@
-import {ApiRequestBody} from "./index";
+export type WaybillModelType = 'InternetDocument' | 'TrackingDocument' | 'TrackingDocumentGeneral';
+
+export type WayBillApiMethodType = 'getDocumentList' | 'getStatusDocuments' | 'getDocumentsEWMovement' | 'getDocumentTrackingHistory';
 
 export enum WayBillFullList {
   PerPage = 0,
@@ -17,7 +19,7 @@ export enum WayBillRedeliveryType {
 
 export enum WayBillPartyType {
   PrivatePerson = 'PrivatePerson',
-  Bussiness = 'Bussiness'
+  Bussiness = 'Bussiness',
 }
 
 export enum WayBillPaymentMethod {
@@ -173,113 +175,113 @@ export interface ApiTrackingHistoryStatus {
 }
 
 export interface ApiTrackingHistoryDocStatus {
-  Number: string,
-  PhoneSender: string,
-  PhoneRecipient: string,
-  DocumentCost: string,
-  CounterpartySender: string,
-  ServiceType: string,
-  OwnerDocumentType: string,
-  RecipientFullName: string,
-  ScheduledDeliveryDate: string,
-  CounterpartyRecipientDescription: string,
-  CounterpartySenderDescription: string,
-  AfterpaymentOnGoodsCost: number,
-  OnlineCreditStatus: string,
-  PayerType: string,
-  CargoType: string,
-  SeatsAmount: string,
-  FactualWeight:string,
-  CalculatedWeight: string,
-  DocumentWeight: number,
-  CheckWeight: number,
-  PaymentMethod: string,
-  CardMaskedNumber: string,
-  MarketplacePartnerToken: string,
-  InternationalDeliveryType: string,
-  SumBeforeCheckWeight: number,
-  UndeliveryReasons: string,
-  AdjustedDate: string,
-  ExpressWaybillPaymentStatus: string,
-  ExpressWaybillAmountToPay: number,
-  TrackingUpdateDate: string,
-  WarehouseRecipient: string,
-  WarehouseSender: string,
-  DateCreated: string,
-  DateScan: string,
-  DateReturnCargo: string,
-  DateMoving: string,
-  DateFirstDayStorage: string,
-  DatePayedKeeping: string,
-  RecipientAddress: string,
-  RecipientDateTime: string,
-  RecipientFullNameEW: string,
-  RefCityRecipient: string,
-  RefCitySender: string,
-  RefSettlementRecipient: string,
-  RefSettlementSender: string,
-  SenderAddress: string,
-  SenderFullNameEW: string,
-  ClientBarcode: string,
-  CitySender: string,
-  CityRecipient: string,
-  CargoDescriptionString: string,
-  AnnouncedPrice: number,
-  AdditionalInformationEW: string,
-  ActualDeliveryDate: string,
-  PostomatV3CellReservationNumber: boolean,
-  AmountToPay: string,
-  AmountPaid: string,
-  RefEW: string,
-  VolumeWeight: string,
-  CheckWeightMethod: string,
-  OwnerDocumentNumber: string,
-  LastCreatedOnTheBasisNumber: string,
-  LastCreatedOnTheBasisDateTime: string,
-  LastTransactionDateTimeGM: string,
-  PaymentStatus: string,
-  PaymentStatusDate: string,
-  LastAmountTransferGM: string,
-  LastAmountReceivedCommissionGM: number,
-  LastCreatedOnTheBasisPayerType: string,
-  DeliveryTimeframe: string,
-  LastTransactionStatusGM: string,
-  CreatedOnTheBasis: any[],
-  Redelivery: number,
-  RedeliveryNum: string,
-  RedeliverySum: number,
-  RedeliveryPayer: string,
-  UndeliveryReasonsDate: string,
-  UndeliveryReasonsSubtypeDescription: string,
-  RecipientWarehouseTypeRef: string,
-  WarehouseRecipientInternetAddressRef: string,
-  WarehouseRecipientNumber: number,
-  WarehouseRecipientRef: string,
-  CategoryOfWarehouse: string,
-  WarehouseRecipientAddress: string,
-  WarehouseSenderInternetAddressRef: string,
-  WarehouseSenderAddress: string,
-  CounterpartyType: string,
-  CounterpartySenderType: string,
-  AviaDelivery: number,
-  BarcodeRedBox: string,
-  CargoReturnRefusal: boolean,
-  DaysStorageCargo: string,
-  ElevatorRecipient: string,
-  NumberOfFloorsLifting: string,
-  Packaging: any[],
-  PartialReturnGoods: any[],
-  SecurePayment: boolean,
-  StorageAmount: string,
-  StoragePrice: string,
-  BarcodePlacementCity: string,
-  BarcodePlacementWarehouse: string,
-  PossibilityCreateRedirecting: boolean,
-  PossibilityCreateReturn: boolean,
-  PossibilityCreateRefusal: boolean,
-  PossibilityChangeEW: boolean,
-  PossibilityChangeCash2Card: boolean,
-  PossibilityChangeDeliveryIntervals: boolean
+  Number: string;
+  PhoneSender: string;
+  PhoneRecipient: string;
+  DocumentCost: string;
+  CounterpartySender: string;
+  ServiceType: string;
+  OwnerDocumentType: string;
+  RecipientFullName: string;
+  ScheduledDeliveryDate: string;
+  CounterpartyRecipientDescription: string;
+  CounterpartySenderDescription: string;
+  AfterpaymentOnGoodsCost: number;
+  OnlineCreditStatus: string;
+  PayerType: string;
+  CargoType: string;
+  SeatsAmount: string;
+  FactualWeight: string;
+  CalculatedWeight: string;
+  DocumentWeight: number;
+  CheckWeight: number;
+  PaymentMethod: string;
+  CardMaskedNumber: string;
+  MarketplacePartnerToken: string;
+  InternationalDeliveryType: string;
+  SumBeforeCheckWeight: number;
+  UndeliveryReasons: string;
+  AdjustedDate: string;
+  ExpressWaybillPaymentStatus: string;
+  ExpressWaybillAmountToPay: number;
+  TrackingUpdateDate: string;
+  WarehouseRecipient: string;
+  WarehouseSender: string;
+  DateCreated: string;
+  DateScan: string;
+  DateReturnCargo: string;
+  DateMoving: string;
+  DateFirstDayStorage: string;
+  DatePayedKeeping: string;
+  RecipientAddress: string;
+  RecipientDateTime: string;
+  RecipientFullNameEW: string;
+  RefCityRecipient: string;
+  RefCitySender: string;
+  RefSettlementRecipient: string;
+  RefSettlementSender: string;
+  SenderAddress: string;
+  SenderFullNameEW: string;
+  ClientBarcode: string;
+  CitySender: string;
+  CityRecipient: string;
+  CargoDescriptionString: string;
+  AnnouncedPrice: number;
+  AdditionalInformationEW: string;
+  ActualDeliveryDate: string;
+  PostomatV3CellReservationNumber: boolean;
+  AmountToPay: string;
+  AmountPaid: string;
+  RefEW: string;
+  VolumeWeight: string;
+  CheckWeightMethod: string;
+  OwnerDocumentNumber: string;
+  LastCreatedOnTheBasisNumber: string;
+  LastCreatedOnTheBasisDateTime: string;
+  LastTransactionDateTimeGM: string;
+  PaymentStatus: string;
+  PaymentStatusDate: string;
+  LastAmountTransferGM: string;
+  LastAmountReceivedCommissionGM: number;
+  LastCreatedOnTheBasisPayerType: string;
+  DeliveryTimeframe: string;
+  LastTransactionStatusGM: string;
+  CreatedOnTheBasis: any[];
+  Redelivery: number;
+  RedeliveryNum: string;
+  RedeliverySum: number;
+  RedeliveryPayer: string;
+  UndeliveryReasonsDate: string;
+  UndeliveryReasonsSubtypeDescription: string;
+  RecipientWarehouseTypeRef: string;
+  WarehouseRecipientInternetAddressRef: string;
+  WarehouseRecipientNumber: number;
+  WarehouseRecipientRef: string;
+  CategoryOfWarehouse: string;
+  WarehouseRecipientAddress: string;
+  WarehouseSenderInternetAddressRef: string;
+  WarehouseSenderAddress: string;
+  CounterpartyType: string;
+  CounterpartySenderType: string;
+  AviaDelivery: number;
+  BarcodeRedBox: string;
+  CargoReturnRefusal: boolean;
+  DaysStorageCargo: string;
+  ElevatorRecipient: string;
+  NumberOfFloorsLifting: string;
+  Packaging: any[];
+  PartialReturnGoods: any[];
+  SecurePayment: boolean;
+  StorageAmount: string;
+  StoragePrice: string;
+  BarcodePlacementCity: string;
+  BarcodePlacementWarehouse: string;
+  PossibilityCreateRedirecting: boolean;
+  PossibilityCreateReturn: boolean;
+  PossibilityCreateRefusal: boolean;
+  PossibilityChangeEW: boolean;
+  PossibilityChangeCash2Card: boolean;
+  PossibilityChangeDeliveryIntervals: boolean;
 }
 
 export interface ApiTrackingHistoryResponse {
@@ -287,6 +289,6 @@ export interface ApiTrackingHistoryResponse {
     [key: string]: ApiTrackingHistoryStatus[];
   };
   DocumentData: {
-    [key: string]: ApiTrackingHistoryDocStatus[]
+    [key: string]: ApiTrackingHistoryDocStatus[];
   };
 }
