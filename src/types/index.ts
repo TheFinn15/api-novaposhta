@@ -34,3 +34,11 @@ export interface ApiRequestOptions<T> {
   additionalOpts?: T;
   nameSystem?: string;
 }
+
+export type FormatResponse = 'json' | 'xml';
+
+export interface InitOptions {
+  apiKey: string;
+  apiUrl?: string;
+  formatResponse?: FormatResponse;
+}

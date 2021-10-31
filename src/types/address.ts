@@ -6,7 +6,11 @@ export type AddressApiMethodType =
   | 'getSettlements'
   | 'getAreas'
   | 'searchSettlements'
-  | 'searchSettlementStreets';
+  | 'searchSettlementStreets'
+  | 'delete'
+  | 'save'
+  | 'update'
+  | 'getCities';
 
 export enum CityTypeRu {
   Village = 'село',
@@ -39,7 +43,7 @@ export interface ApiAreasResponse {
   Description: string;
 }
 
-export interface ApiCitiesProperties {
+export interface ApiSettlementsProperties {
   Ref?: string;
   RegionRef?: string;
   FindByString?: string;
@@ -47,7 +51,7 @@ export interface ApiCitiesProperties {
   Page?: string;
 }
 
-export interface ApiCitiesResponse {
+export interface ApiSettlementsResponse {
   Ref: string;
   SettlementType: string;
   Description: string;
@@ -73,6 +77,33 @@ export interface ApiCitiesResponse {
   Delivery7: string;
   IndexCOATSU1: string;
   Warehouse: string;
+}
+
+export interface ApiCitiesProperties {
+  Ref?: string;
+  Page?: number;
+  FindByString?: string;
+}
+
+export interface ApiCitiesResponse {
+  Description: string;
+  DescriptionRu: string;
+  Ref: string;
+  Delivery1: string;
+  Delivery2: string;
+  Delivery3: string;
+  Delivery4: string;
+  Delivery5: string;
+  Delivery6: string;
+  Delivery7: string;
+  Area: string;
+  SettlementType: string;
+  IsBranch: string;
+  PreventEntryNewStreetsUser: string | null;
+  Conglomerates: string | null;
+  CityID: string;
+  SettlementTypeDescriptionRu: CityTypeRu;
+  SettlementTypeDescription: CityType;
 }
 
 export interface ApiSearchCityProperties {
@@ -195,4 +226,21 @@ export interface ApiWarehouseStreetResponse {
   Description: string;
   StreetsTypeRef: string;
   StreetsType: StreetType;
+}
+
+export interface ApiDeleteAddress {
+  Ref: string;
+}
+
+export interface ApiAddressProperties {
+  CounterpartyRef: string;
+  StreetRef: string;
+  BuildingNumber: string;
+  Flat: string;
+  Note?: string;
+}
+
+export interface ApiAddressResponse {
+  Ref: string;
+  Description: string;
 }

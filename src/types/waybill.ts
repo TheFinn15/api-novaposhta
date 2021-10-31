@@ -1,6 +1,10 @@
 export type WaybillModelType = 'InternetDocument' | 'TrackingDocument' | 'TrackingDocumentGeneral';
 
-export type WayBillApiMethodType = 'getDocumentList' | 'getStatusDocuments' | 'getDocumentsEWMovement' | 'getDocumentTrackingHistory';
+export type WayBillApiMethodType =
+  | 'getDocumentList'
+  | 'getStatusDocuments'
+  | 'getDocumentsEWMovement'
+  | 'getDocumentTrackingHistory';
 
 export enum WayBillFullList {
   PerPage = 0,

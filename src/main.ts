@@ -1,17 +1,13 @@
-import { ApiNovaPoshta } from './api/api.controller';
+import { ApiAddress } from './api/controller/address.controller';
 
-const api = new ApiNovaPoshta('json');
+const api = new ApiAddress({
+  apiKey: '7497f82295a3212ee0139629d32e3d6e'
+});
 
 (async () => {
-  console.dir(
-    await api.getTrackingHistoryInfo({
-      Documents: [
-        {
-          DocumentNumber: '',
-          Phone: '',
-        },
-      ],
+  console.log(
+    await api.getCities({
+      FindByString: 'Сели',
     }),
-    { depth: null, colors: true, maxArrayLength: null },
   );
 })();

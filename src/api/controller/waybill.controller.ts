@@ -1,4 +1,3 @@
-import { ApiConfigure } from '../middleware';
 import {
   ApiTrackingHistoryProperties,
   ApiTrackingHistoryResponse,
@@ -7,11 +6,10 @@ import {
   ListWayBillResponse,
   TrackingWayBillResponse,
   WayBillMethodProperties,
-} from '../types/waybill';
+} from '../../types/waybill';
+import { BaseApi } from '../base';
 
-export class ApiWayBill {
-  constructor(private apiUrl: string, private config: ApiConfigure) {}
-
+export class ApiWayBill extends BaseApi {
   async getListWayBill(opts?: WayBillMethodProperties) {
     return await this.config.generateRequest<ListWayBillResponse, WayBillMethodProperties>({
       model: 'InternetDocument',

@@ -1,11 +1,18 @@
 import axios, { Method } from 'axios';
-import { ApiMethodType, ApiRequestBody, ApiRequestOptions, ApiResponseBody, ModelType } from '../types';
+import {
+  ApiMethodType,
+  ApiRequestBody,
+  ApiRequestOptions,
+  ApiResponseBody,
+  ModelType,
+} from '../types';
+import { BaseApi } from '../api/base';
 
-export class ApiConfigure {
-  constructor(private formatData: 'json' | 'xml' = 'json') {}
+export class ApiMiddleware {
+  constructor(private formatData: 'json' | 'xml' = 'json', private apiUrl: string) {}
 
   async getRequest<T>(method: Method, data: ApiRequestBody<any>) {
-    const url = `${process.env.API_HOST_URL}${this.formatData}/`;
+    const url = `${this.apiUrl}${this.formatData}/`;
 
     return (
       await axios({

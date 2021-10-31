@@ -1,7 +1,10 @@
 import {
+  ApiAddressProperties,
+  ApiAddressResponse,
   ApiAreasResponse,
-  ApiCitiesProperties,
-  ApiCitiesResponse,
+  ApiSettlementsProperties,
+  ApiSettlementsResponse,
+  ApiDeleteAddress,
   ApiSearchCityAddress,
   ApiSearchCityProperties,
   ApiSearchResponse,
@@ -11,14 +14,14 @@ import {
   ApiWarehouseResponse,
   ApiWarehouseStreetProperties,
   ApiWarehouseStreetResponse,
-} from '../types/address';
-import { ApiConfigure } from '../middleware';
+  ApiCitiesProperties,
+  ApiCitiesResponse,
+} from '../../types/address';
+import { BaseApi } from '../base';
 
-export class ApiAddress {
-  constructor(private apiUrl: string, private config: ApiConfigure) {}
-
-  async getCities(properties: ApiCitiesProperties) {
-    return await this.config.generateRequest<ApiCitiesResponse, ApiCitiesProperties>({
+export class ApiAddress extends BaseApi {
+  async getSettlements(properties: ApiSettlementsProperties) {
+    return await this.config.generateRequest<ApiSettlementsResponse, ApiSettlementsProperties>({
       model: 'AddressGeneral',
       apiMethod: 'getSettlements',
       requestMethod: 'post',
@@ -31,6 +34,15 @@ export class ApiAddress {
       model: 'Address',
       apiMethod: 'getAreas',
       requestMethod: 'post',
+    });
+  }
+
+  async getCities(properties: ApiCitiesProperties) {
+    return await this.config.generateRequest<ApiCitiesResponse, ApiCitiesProperties>({
+      model: 'Address',
+      apiMethod: 'getCities',
+      requestMethod: 'post',
+      additionalOpts: properties,
     });
   }
 
@@ -71,6 +83,33 @@ export class ApiAddress {
     return await this.config.generateRequest<ApiWarehouseStreetResponse, ApiWarehouseProperties>({
       model: 'Address',
       apiMethod: 'getStreet',
+      requestMethod: 'post',
+      additionalOpts: properties,
+    });
+  }
+
+  async deleteContractorAddress(properties: ApiDeleteAddress) {
+    return await this.config.generateRequest<ApiDeleteAddress, ApiDeleteAddress>({
+      model: 'Address',
+      apiMethod: 'delete',
+      requestMethod: 'post',
+      additionalOpts: properties,
+    });
+  }
+
+  async createContractorAddress(properties: ApiAddressProperties) {
+    return await this.config.generateRequest<ApiAddressResponse, ApiAddressProperties>({
+      model: 'Address',
+      apiMethod: 'save',
+      requestMethod: 'post',
+      additionalOpts: properties,
+    });
+  }
+
+  async updateContractorAddress(properties: ApiAddressProperties) {
+    return await this.config.generateRequest<ApiAddressResponse, ApiAddressProperties>({
+      model: 'Address',
+      apiMethod: 'update',
       requestMethod: 'post',
       additionalOpts: properties,
     });
