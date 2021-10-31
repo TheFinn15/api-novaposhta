@@ -7,7 +7,7 @@ import {
 import {ApiAddress} from "./address.service";
 import {ApiConfigure} from "../middleware";
 import dotenv from 'dotenv';
-import {ApiTrackingInfoProperties} from "../types/waybill";
+import { ApiTrackingHistoryProperties, ApiTrackingInfoProperties } from '../types/waybill';
 import {ApiWayBill} from "./waybill.service";
 
 dotenv.config({path: './.env.development'});
@@ -45,5 +45,9 @@ export class ApiNovaPoshta {
 
   async getTrackingInfo(opts: ApiTrackingInfoProperties) {
     return (await this.waybillApi.getTrackingInfo(opts));
+  }
+
+  async getTrackingHistoryInfo(opts: ApiTrackingHistoryProperties) {
+    return (await this.waybillApi.getTrackingHistory(opts));
   }
 }

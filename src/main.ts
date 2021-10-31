@@ -1,11 +1,14 @@
-import {ApiNovaPoshta} from "./api/api.controller";
-import {NewFormatData} from "./types/waybill";
+import { ApiNovaPoshta } from './api/api.controller';
 
 const api = new ApiNovaPoshta('json');
 
 (async () => {
-  console.dir((await api.getTrackingInfo({
-    Number: '20400255487089',
-    NewFormat: NewFormatData.New
-  })), {depth: null, colors: true, maxArrayLength: null});
+  console.dir((await api.getTrackingHistoryInfo({
+    Documents: [
+      {
+        DocumentNumber: '',
+        Phone: '',
+      },
+    ],
+  })), { depth: null, colors: true, maxArrayLength: null });
 })();

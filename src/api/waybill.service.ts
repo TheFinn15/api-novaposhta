@@ -1,11 +1,12 @@
 import {ApiConfigure} from "../middleware";
 import {
+  ApiTrackingHistoryProperties, ApiTrackingHistoryResponse,
   ApiTrackingInfoProperties,
   ApiTrackingInfoResponse,
   ListWayBillResponse,
   TrackingWayBillResponse,
-  WayBillMethodProperties
-} from "../types/waybill";
+  WayBillMethodProperties,
+} from '../types/waybill';
 
 export class ApiWayBill {
   constructor(private apiUrl: string, private config: ApiConfigure) {}
@@ -38,5 +39,13 @@ export class ApiWayBill {
     });
   }
 
-  async getTrackingHistory(opts: any) {}
+  async getTrackingHistory(opts: ApiTrackingHistoryProperties) {
+    return await this.config.generateRequest<ApiTrackingHistoryResponse, ApiTrackingHistoryProperties>({
+      model: 'TrackingDocumentGeneral',
+      apiMethod: 'getDocumentTrackingHistory',
+      requestMethod: 'post',
+      additionalOpts: opts,
+      nameSystem: 'Tracking'
+      });
+  }
 }
