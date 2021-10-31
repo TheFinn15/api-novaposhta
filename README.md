@@ -1,10 +1,8 @@
-## `API NovaPoshta`
-### Library for comfortable using api novaposhta.ua
-## `Working with API`
-#### `getAreas` - get areas around a country
-#### `getListWayBill` - get list of waybills 
-#### `getTrackingParcel` - get detail info about parcel
-#### `getCities` - get info about city from search query
-
-## `Run API`
-#### `yarn start` or `npm run start` - build and run project
+# `API NovaPoshta`
+## `Install Project`
+#### `yarn install` or `npm install`
+## `Scripts in projects`
+### Build and run project
+#### `yarn start` or `npm run start`
+### Format all code in project
+#### `yarn format` or `npm run format`
