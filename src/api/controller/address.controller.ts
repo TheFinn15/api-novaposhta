@@ -19,7 +19,7 @@ import {
 } from '../../types/address';
 import { BaseApi } from '../base';
 
-export class ApiAddress extends BaseApi {
+export default class ApiAddress extends BaseApi {
   async getSettlements(properties: ApiSettlementsProperties) {
     return await this.config.generateRequest<ApiSettlementsResponse, ApiSettlementsProperties>({
       model: 'AddressGeneral',

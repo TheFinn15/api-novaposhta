@@ -20,7 +20,7 @@ export interface ApiResponseBody<T> {
   data: T[];
   errors: string[];
   warnings: string[];
-  info: string[];
+  info: {totalCount: number} | any[];
   messageCodes: string[];
   errorCodes: string[];
   warningCodes: string[];

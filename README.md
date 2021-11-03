@@ -1,3 +1,3 @@
 ## API NovaPoshta
 
-Temporarily is not available
+Documentation of API is temporarily not available

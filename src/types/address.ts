@@ -217,7 +217,7 @@ export interface ApiWarehouseResponse {
 
 export interface ApiWarehouseStreetProperties {
   CityRef: string;
-  FindByString: string;
+  FindByString?: string;
   Page?: number;
 }
 
