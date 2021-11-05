@@ -16,10 +16,10 @@ export abstract class BaseApi {
 
   protected apiKey?: string;
 
-  constructor(options?: InitOptions) {
-    this.apiKey = options?.apiKey;
-    this.apiUrl = options?.apiUrl;
+  constructor(options: InitOptions) {
+    this.apiKey = options.apiKey;
+    this.apiUrl = options.apiUrl;
 
-    this.formatResponse = options?.formatResponse ?? 'json';
+    this.formatResponse = options.formatResponse ?? 'json';
   }
 }

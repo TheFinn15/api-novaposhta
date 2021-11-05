@@ -1,56 +1,38 @@
-export type WaybillModelType = 'InternetDocument' | 'TrackingDocument' | 'TrackingDocumentGeneral';
+import {
+  DeliveryType,
+  FormatDataType,
+  PaymentMethods,
+  RedeliveryCargoType,
+  RedeliveryPayerType,
+  CargoType,
+  CounterpartyType,
+  PayerType,
+  DocumentFullList,
+} from './document.enum';
 
-export type WayBillApiMethodType =
+export type DocumentModelType = 'InternetDocument' | 'TrackingDocument' | 'TrackingDocumentGeneral';
+
+export type DocumentApiMethodType =
   | 'getDocumentList'
   | 'getStatusDocuments'
   | 'getDocumentsEWMovement'
-  | 'getDocumentTrackingHistory';
+  | 'getDocumentTrackingHistory' | 'getDocumentDeliveryDate' | 'getDocumentPrice' | 'update';
 
-export enum WayBillFullList {
-  PerPage = 0,
-  AllList = 1,
-}
-
-export enum WayBillPayerType {
-  Sender = 'sender',
-  Receiver = 'receiver',
-}
-
-export enum WayBillRedeliveryType {
-  Recipient = 'recipient',
-  Sender = 'sender',
-}
-
-export enum WayBillPartyType {
-  PrivatePerson = 'PrivatePerson',
-  Bussiness = 'Bussiness',
-}
-
-export enum WayBillPaymentMethod {
-  Cash = 'cash',
-  CreditCard = 'credit-card',
-}
-
-export enum NewFormatData {
-  Old = 0,
-  New = 1,
-}
-
-export interface WayBillDocument {
+export interface DocumentType {
   DocumentNumber: string;
   Phone: string;
 }
 
-export interface WayBillMethodProperties {
+export interface DocumentMethodProperties {
   DateTimeFrom?: string;
   DateTimeTo?: string;
   Page?: string;
-  GetFullList?: WayBillFullList;
+  GetFullList?: DocumentFullList;
   DateTime?: string;
-  Documents?: WayBillDocument[];
+  Documents?: DocumentType[];
 }
 
-export interface ListWayBillResponse {
+export interface ListDocumentResponse {
   Ref: string;
   DateTime: string;
   PreferredDeliveryDate: string;
@@ -63,19 +45,19 @@ export interface ListWayBillResponse {
   SenderAddress: string;
   RecipientAddress: string;
   CostOnSite: number;
-  PayerType: WayBillPayerType;
-  PaymentMethod: WayBillPaymentMethod;
+  PayerType: PayerType;
+  PaymentMethod: PaymentMethods;
   AfterpaymentOnGoodsCost: string;
   PackingNumber: string;
   RejectionReason: string;
 }
 
-export interface TrackingWayBillResponse {
+export interface TrackingDocumentResponse {
   Number: string;
   Redelivery: number;
   RedeliverySum: number;
   RedeliveryNum: string;
-  RedeliveryPayer: WayBillRedeliveryType;
+  RedeliveryPayer: RedeliveryPayerType;
   OwnerDocumentType: string;
   LastCreatedOnTheBasisDocumentType: string;
   LastCreatedOnTheBasisPayerType: string;
@@ -100,7 +82,7 @@ export interface TrackingWayBillResponse {
   CitySender: string;
   CityRecipent: string;
   WarehouseRecipient: string;
-  CounterpartyType: WayBillPartyType;
+  CounterpartyType: CounterpartyType;
   AfterpaymentOnGoodsCost: string;
   ServiceType: string;
   UndeliveryReasonsSubtypeDescription: string;
@@ -130,7 +112,7 @@ export interface TrackingWayBillResponse {
 
 export interface ApiTrackingInfoProperties {
   Number: string;
-  NewFormat: NewFormatData;
+  NewFormat: FormatDataType;
 }
 
 export interface ApiTrackingInfoStatus {
@@ -167,7 +149,7 @@ export interface ApiTrackingInfoResponse {
 }
 
 export interface ApiTrackingHistoryProperties {
-  Documents: WayBillDocument[];
+  Documents: DocumentType[];
   Language?: string;
 }
 
@@ -295,4 +277,80 @@ export interface ApiTrackingHistoryResponse {
   DocumentData: {
     [key: string]: ApiTrackingHistoryDocStatus[];
   };
+}
+
+export interface ParcelDeliveryDateProperties {
+  DateTime?: string;
+  ServiceType: DeliveryType;
+  CitySender: string;
+  CityRecipient: string;
+}
+
+export interface ParcelDeliveryDateResponse {
+  DeliveryDate: {
+    date: string;
+    timezone_type: number;
+    timezone: string;
+  }
+}
+
+export interface ParcelPriceProperties {
+  CitySender: string;
+  CityRecipient: string;
+  Weight: string;
+  ServiceType: DeliveryType;
+  Cost: string;
+  CargoType: CargoType;
+  SeatsAmount: string;
+  RedeliveryCalculate?: {
+    CargoType: RedeliveryCargoType;
+    Amount: string;
+  };
+  PackCount?: string;
+  PackRef?: string;
+  Amount?: string;
+  CargoDetails?: string
+}
+
+export interface ParcelPriceResponse {
+  AssessedCost: number;
+  Cost: number;
+  CostRedelivery?: number;
+  TZoneInfo?: {
+    TzoneName: string;
+    TzoneID: string;
+  },
+  CostPack?: number;
+}
+
+export interface EditDocumentProperties {
+  Ref: string;
+  PayerType: PayerType;
+  PaymentMethod: PaymentMethods;
+  DateTime: string;
+  CargoType: CargoType;
+  VolumeGeneral: number;
+  Weight: number;
+  ServiceType: DeliveryType;
+  SeatsAmount: string;
+  Description: string;
+  Cost: number;
+  CitySender: string;
+  Sender: string;
+  SenderAddress: string;
+  ContactSender: string;
+  SendersPhone: string;
+  CityRecipient: string;
+  Recipient: string;
+  RecipientAddress: string;
+  ContactRecipient: string;
+  RecipientsPhone: string;
+}
+
+export interface EditDocumentResponse {
+  Ref: string;
+  CostOnSite: string;
+  EstimatedDeliveryDate: string;
+  IntDocNumber: string;
+  TypeDocument: string;
 }

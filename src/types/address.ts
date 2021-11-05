@@ -1,3 +1,5 @@
+import { CityType, CityTypeCode, CityTypeRu, StreetType } from './address.enum';
+
 export type AddressModelType = 'Address' | 'AddressGeneral';
 
 export type AddressApiMethodType =
@@ -11,30 +13,6 @@ export type AddressApiMethodType =
   | 'save'
   | 'update'
   | 'getCities';
-
-export enum CityTypeRu {
-  Village = 'село',
-  City = 'город',
-  Settlement = 'пгт',
-}
-
-export enum CityType {
-  Village = 'село',
-  City = 'місто',
-  Settlement = 'пгт',
-}
-
-export enum CityTypeCode {
-  City = 'м.',
-  Village = 'с.',
-}
-
-export enum StreetType {
-  Street = 'вул.',
-  Boulevard = 'бул.',
-  Avenue = 'просп.',
-  HighWay = 'шосе',
-}
 
 export interface ApiAreasResponse {
   Ref: string;
@@ -130,8 +108,8 @@ export interface ApiSearchResponse<T> {
 }
 
 export interface ApiSearchStreetProperties {
-  StreetName?: string;
-  SettlementRef?: string;
+  StreetName: string;
+  SettlementRef: string;
   Limit?: number;
 }
 

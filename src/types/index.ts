@@ -1,10 +1,17 @@
 import { Method } from 'axios';
 import { AddressApiMethodType, AddressModelType } from './address';
-import { WayBillApiMethodType, WaybillModelType } from './waybill';
+import { DocumentApiMethodType, DocumentModelType } from './document';
 
-export type ModelType = AddressModelType | WaybillModelType;
+export type ModelType = AddressModelType | DocumentModelType;
 
-export type ApiMethodType = AddressApiMethodType | WayBillApiMethodType;
+export type ApiMethodType = AddressApiMethodType | DocumentApiMethodType;
+
+export type ApiInformingType = 'error' | 'warning' | 'info';
+
+export type ApiInformingOptions = {
+  descriptions: string[];
+  codes: string[];
+}
 
 export interface ApiRequestBody<T> {
   apiKey: string;
@@ -16,7 +23,7 @@ export interface ApiRequestBody<T> {
 }
 
 export interface ApiResponseBody<T> {
-  success: string;
+  success: boolean;
   data: T[];
   errors: string[];
   warnings: string[];
