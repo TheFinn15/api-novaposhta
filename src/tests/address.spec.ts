@@ -1,4 +1,4 @@
-import ApiAddress from "src/api/controller/address.controller";
+import ApiAddress from 'src/api/controller/address.controller';
 
 // describe('Testing address api', () => {
 //   const api = new ApiAddress({apiKey: '<API_TOKEN>'});

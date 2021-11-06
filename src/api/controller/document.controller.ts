@@ -3,11 +3,15 @@ import {
   ApiTrackingHistoryResponse,
   ApiTrackingInfoProperties,
   ApiTrackingInfoResponse,
+  DocumentMethodProperties,
+  EditDocumentProperties,
+  EditDocumentResponse,
+  ListDocumentResponse,
   ParcelDeliveryDateProperties,
   ParcelDeliveryDateResponse,
-  ListDocumentResponse,
+  ParcelPriceProperties,
+  ParcelPriceResponse,
   TrackingDocumentResponse,
-  DocumentMethodProperties, ParcelPriceProperties, ParcelPriceResponse, EditDocumentProperties, EditDocumentResponse,
 } from '../../types/document';
 import { BaseApi } from '../base';
 
@@ -22,7 +26,10 @@ export default class ApiDocument extends BaseApi {
   }
 
   async getParcelDeliveryDate(opts: ParcelDeliveryDateProperties) {
-    return await this.config.generateRequest<ParcelDeliveryDateResponse, ParcelDeliveryDateProperties>({
+    return await this.config.generateRequest<
+      ParcelDeliveryDateResponse,
+      ParcelDeliveryDateProperties
+    >({
       model: 'InternetDocument',
       apiMethod: 'getDocumentDeliveryDate',
       requestMethod: 'post',

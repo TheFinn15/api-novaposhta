@@ -6,9 +6,9 @@ export type ModelType = AddressModelType | DocumentModelType;
 
 export type ApiMethodType = AddressApiMethodType | DocumentApiMethodType;
 
-export type ApiInformingType = 'error' | 'warning' | 'info';
+export type ApiInformingType = 'error' | 'warning' | 'info' | null;
 
-export type ApiInformingOptions = {
+export interface ApiInformingOptions {
   descriptions: string[];
   codes: string[];
 }
@@ -27,7 +27,7 @@ export interface ApiResponseBody<T> {
   data: T[];
   errors: string[];
   warnings: string[];
-  info: {totalCount: number} | any[];
+  info: { totalCount: number } | any[];
   messageCodes: string[];
   errorCodes: string[];
   warningCodes: string[];
@@ -48,4 +48,14 @@ export interface InitOptions {
   apiKey: string;
   apiUrl?: string;
   formatResponse?: FormatResponse;
+}
+
+export interface InformerResponse<T> {
+  data: T[];
+  warns: string[];
+}
+
+export interface InformerCheckWarnings {
+  type: ApiInformingType;
+  opts: ApiInformingOptions | null;
 }

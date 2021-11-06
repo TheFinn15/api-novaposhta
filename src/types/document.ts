@@ -16,7 +16,10 @@ export type DocumentApiMethodType =
   | 'getDocumentList'
   | 'getStatusDocuments'
   | 'getDocumentsEWMovement'
-  | 'getDocumentTrackingHistory' | 'getDocumentDeliveryDate' | 'getDocumentPrice' | 'update';
+  | 'getDocumentTrackingHistory'
+  | 'getDocumentDeliveryDate'
+  | 'getDocumentPrice'
+  | 'update';
 
 export interface DocumentType {
   DocumentNumber: string;
@@ -291,7 +294,7 @@ export interface ParcelDeliveryDateResponse {
     date: string;
     timezone_type: number;
     timezone: string;
-  }
+  };
 }
 
 export interface ParcelPriceProperties {
@@ -309,7 +312,7 @@ export interface ParcelPriceProperties {
   PackCount?: string;
   PackRef?: string;
   Amount?: string;
-  CargoDetails?: string
+  CargoDetails?: string;
 }
 
 export interface ParcelPriceResponse {
@@ -319,7 +322,7 @@ export interface ParcelPriceResponse {
   TZoneInfo?: {
     TzoneName: string;
     TzoneID: string;
-  },
+  };
   CostPack?: number;
 }
 

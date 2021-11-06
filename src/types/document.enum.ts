@@ -4,25 +4,25 @@ export enum DeliveryType {
   WarehouseWarehouse = 'WarehouseWarehouse',
   WarehouseDoors = 'WarehouseAddress',
   DoorsPostomat = 'DoorsPostomat',
-  WarehousePostomat = 'WarehousePostomat'
+  WarehousePostomat = 'WarehousePostomat',
 }
 
 export enum CargoType {
   Cargo = 'Cargo',
   Documents = 'Documents',
-  TiresWheels= 'TiresWheels',
+  TiresWheels = 'TiresWheels',
   Pallet = 'Pallet',
 }
 
 export enum RedeliveryCargoType {
   Money = 'Money',
-  Documents = 'Documents'
+  Documents = 'Documents',
 }
 
 export enum PayerType {
   Sender = 'Sender',
   Receiver = 'Receiver',
-  ThirdPerson = 'ThirdPerson'
+  ThirdPerson = 'ThirdPerson',
 }
 
 export enum RedeliveryPayerType {
@@ -38,7 +38,7 @@ export enum CounterpartyType {
 
 export enum PaymentMethods {
   Cash = 'Cash',
-  NonCash = 'NonCash'
+  NonCash = 'NonCash',
 }
 
 export enum FormatDataType {
