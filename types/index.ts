@@ -2,10 +2,19 @@ import { Method } from 'axios';
 import { AddressApiMethodType, AddressModelType } from './address';
 import { DocumentApiMethodType, DocumentModelType } from './document';
 import { CommonApiMethodType, CommonModelType } from './common';
+import { CounterpartyApiMethodType, CounterpartyModelType } from './counterparty';
 
-export type ModelType = AddressModelType | DocumentModelType | CommonModelType;
+export type ModelType =
+  | AddressModelType
+  | DocumentModelType
+  | CommonModelType
+  | CounterpartyModelType;
 
-export type ApiMethodType = AddressApiMethodType | DocumentApiMethodType | CommonApiMethodType;
+export type ApiMethodType =
+  | AddressApiMethodType
+  | DocumentApiMethodType
+  | CommonApiMethodType
+  | CounterpartyApiMethodType;
 
 export type ApiInformingType = 'error' | 'warning' | 'info' | null;
 
