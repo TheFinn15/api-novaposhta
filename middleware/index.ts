@@ -1,11 +1,18 @@
 import axios, { Method } from 'axios';
-import { ApiMethodType, ApiRequestBody, ApiRequestOptions, ApiResponseBody, FormatResponse, ModelType } from '../types';
+import {
+  ApiMethodType,
+  ApiRequestBody,
+  ApiRequestOptions,
+  ApiResponseBody,
+  FormatResponse,
+  ModelType,
+} from '../types';
 import { ApiInformer } from './informer';
 
 export class ApiMiddleware {
   constructor(private formatData: FormatResponse, private apiUrl: string, private apiKey: string) {}
 
-  async getRequest<T>(method: Method, data: ApiRequestBody<any>) {
+  private async getRequest<T>(method: Method, data: ApiRequestBody<any>) {
     const url = `${this.apiUrl}${this.formatData}/`;
 
     return await axios({

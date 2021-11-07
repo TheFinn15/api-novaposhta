@@ -20,7 +20,9 @@ export type DocumentApiMethodType =
   | 'getDocumentTrackingHistory'
   | 'getDocumentDeliveryDate'
   | 'getDocumentPrice'
-  | 'update' | 'delete' | 'generateReport';
+  | 'update'
+  | 'delete'
+  | 'generateReport';
 
 export interface DocumentType {
   DocumentNumber: string;
@@ -415,7 +417,7 @@ export interface CreatePostomatDocumentProperties {
   PaymentMethod: PaymentMethods;
   DateTime: string;
   CargoType: CargoType;
-  OptionsSeat?: (OptionsSeatEntity)[] | null;
+  OptionsSeat?: OptionsSeatEntity[] | null;
   ServiceType: DeliveryType;
   SeatsAmount: string;
   Description: string;
@@ -484,7 +486,11 @@ export interface RedeliveryServices {
   UserActions: string;
 }
 
-export type CreateDocumentProperties = (CreateFullInfoDocumentProperties | CreateSimpleDocumentProperties | CreatePostomatDocumentProperties | CreateRedeliveryDocumentProperties);
+export type CreateDocumentProperties =
+  | CreateFullInfoDocumentProperties
+  | CreateSimpleDocumentProperties
+  | CreatePostomatDocumentProperties
+  | CreateRedeliveryDocumentProperties;
 
 export interface CreateDocumentResponse {
   Ref: string;

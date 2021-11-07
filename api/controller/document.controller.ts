@@ -10,7 +10,9 @@ import {
   DeleteDocumentResponse,
   DocumentMethodProperties,
   EditDocumentProperties,
-  EditDocumentResponse, GenerateReportProperties, GenerateReportResponse,
+  EditDocumentResponse,
+  GenerateReportProperties,
+  GenerateReportResponse,
   ListDocumentResponse,
   ParcelDeliveryDateProperties,
   ParcelDeliveryDateResponse,
@@ -20,6 +22,9 @@ import {
 } from '../../types/document';
 import { BaseApi } from '../base';
 
+/*
+ * API class for help working with waybills.
+ */
 export default class ApiDocument extends BaseApi {
   async getListDocument(opts?: DocumentMethodProperties) {
     return await this.config.generateRequest<ListDocumentResponse, DocumentMethodProperties>({
@@ -52,7 +57,10 @@ export default class ApiDocument extends BaseApi {
   }
 
   async createDocument(opts: CreateDocumentProperties) {
-    return await this.config.generateRequest<CreatePostomatDocumentResponse | CreateDocumentResponse, CreateDocumentProperties>({
+    return await this.config.generateRequest<
+      CreatePostomatDocumentResponse | CreateDocumentResponse,
+      CreateDocumentProperties
+    >({
       model: 'InternetDocument',
       apiMethod: 'save',
       requestMethod: 'post',
@@ -77,7 +85,6 @@ export default class ApiDocument extends BaseApi {
       additionalOpts: opts,
     });
   }
-
 
   async updateDocument(opts: EditDocumentProperties) {
     return await this.config.generateRequest<EditDocumentResponse, EditDocumentProperties>({

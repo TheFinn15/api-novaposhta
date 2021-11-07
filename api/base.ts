@@ -12,15 +12,10 @@ export abstract class BaseApi {
 
   constructor(options: InitOptions) {
     this.apiKey = options.apiKey;
-    if (options.apiUrl)
-      this.apiUrl = options.apiUrl;
+    if (options.apiUrl) this.apiUrl = options.apiUrl;
 
     this.formatResponse = options.formatResponse ?? 'json';
 
-    this.config = new ApiMiddleware(
-      this.formatResponse,
-      this.apiUrl,
-      this.apiKey ?? ''
-    );
+    this.config = new ApiMiddleware(this.formatResponse, this.apiUrl, this.apiKey ?? '');
   }
 }

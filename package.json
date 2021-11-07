@@ -2,7 +2,7 @@
   "name": "api-novaposhta",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/src/main.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "jest -u",
     "start": "tsc && node .",

@@ -1,10 +1,11 @@
 import { Method } from 'axios';
 import { AddressApiMethodType, AddressModelType } from './address';
 import { DocumentApiMethodType, DocumentModelType } from './document';
+import { CommonApiMethodType, CommonModelType } from './common';
 
-export type ModelType = AddressModelType | DocumentModelType;
+export type ModelType = AddressModelType | DocumentModelType | CommonModelType;
 
-export type ApiMethodType = AddressApiMethodType | DocumentApiMethodType;
+export type ApiMethodType = AddressApiMethodType | DocumentApiMethodType | CommonApiMethodType;
 
 export type ApiInformingType = 'error' | 'warning' | 'info' | null;
 
