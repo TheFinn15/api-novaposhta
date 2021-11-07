@@ -16,7 +16,7 @@ export class ApiInformer {
   getApiResponse<T>(): InformerResponse<T> {
     const res: InformerResponse<T> = {
       data: [],
-      warns: [],
+      logs: [],
     };
     if (this.rawResponse.data.length) res.data.push(...this.rawResponse.data);
 
@@ -24,7 +24,7 @@ export class ApiInformer {
       for (let i = 0; i < this.haveWarns.opts.codes.length; i++) {
         const code = this.haveWarns.opts.codes[i];
         const description = this.haveWarns.opts.descriptions[i];
-        res.warns.push(
+        res.logs.push(
           `${this.haveWarns.type?.toUpperCase()}: Gotten message - ${description} | CODE: ${code}`,
         );
       }

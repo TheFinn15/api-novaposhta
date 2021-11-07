@@ -3,9 +3,14 @@ import {
   ApiTrackingHistoryResponse,
   ApiTrackingInfoProperties,
   ApiTrackingInfoResponse,
+  CreateDocumentProperties,
+  CreateDocumentResponse,
+  CreatePostomatDocumentResponse,
+  DeleteDocumentProperties,
+  DeleteDocumentResponse,
   DocumentMethodProperties,
   EditDocumentProperties,
-  EditDocumentResponse,
+  EditDocumentResponse, GenerateReportProperties, GenerateReportResponse,
   ListDocumentResponse,
   ParcelDeliveryDateProperties,
   ParcelDeliveryDateResponse,
@@ -45,6 +50,34 @@ export default class ApiDocument extends BaseApi {
       additionalOpts: opts,
     });
   }
+
+  async createDocument(opts: CreateDocumentProperties) {
+    return await this.config.generateRequest<CreatePostomatDocumentResponse | CreateDocumentResponse, CreateDocumentProperties>({
+      model: 'InternetDocument',
+      apiMethod: 'save',
+      requestMethod: 'post',
+      additionalOpts: opts,
+    });
+  }
+
+  async deleteDocument(opts: DeleteDocumentProperties) {
+    return await this.config.generateRequest<DeleteDocumentResponse, DeleteDocumentProperties>({
+      model: 'InternetDocument',
+      apiMethod: 'delete',
+      requestMethod: 'post',
+      additionalOpts: opts,
+    });
+  }
+
+  async generateReport(opts: GenerateReportProperties) {
+    return await this.config.generateRequest<GenerateReportResponse, GenerateReportProperties>({
+      model: 'InternetDocument',
+      apiMethod: 'generateReport',
+      requestMethod: 'post',
+      additionalOpts: opts,
+    });
+  }
+
 
   async updateDocument(opts: EditDocumentProperties) {
     return await this.config.generateRequest<EditDocumentResponse, EditDocumentProperties>({

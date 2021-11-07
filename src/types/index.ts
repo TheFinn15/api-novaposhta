@@ -8,6 +8,8 @@ export type ApiMethodType = AddressApiMethodType | DocumentApiMethodType;
 
 export type ApiInformingType = 'error' | 'warning' | 'info' | null;
 
+export type ReportType = 'xls' | 'csv';
+
 export interface ApiInformingOptions {
   descriptions: string[];
   codes: string[];
@@ -45,14 +47,14 @@ export interface ApiRequestOptions<T> {
 export type FormatResponse = 'json' | 'xml';
 
 export interface InitOptions {
-  apiKey: string;
+  apiKey?: string;
   apiUrl?: string;
   formatResponse?: FormatResponse;
 }
 
 export interface InformerResponse<T> {
   data: T[];
-  warns: string[];
+  logs: string[];
 }
 
 export interface InformerCheckWarnings {

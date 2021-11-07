@@ -9,6 +9,7 @@ import {
   PayerType,
   DocumentFullList,
 } from './document.enum';
+import { ReportType } from './index';
 
 export type DocumentModelType = 'InternetDocument' | 'TrackingDocument' | 'TrackingDocumentGeneral';
 
@@ -19,7 +20,7 @@ export type DocumentApiMethodType =
   | 'getDocumentTrackingHistory'
   | 'getDocumentDeliveryDate'
   | 'getDocumentPrice'
-  | 'update';
+  | 'update' | 'delete' | 'generateReport';
 
 export interface DocumentType {
   DocumentNumber: string;
@@ -356,4 +357,170 @@ export interface EditDocumentResponse {
   EstimatedDeliveryDate: string;
   IntDocNumber: string;
   TypeDocument: string;
+}
+
+export interface CreateFullInfoDocumentProperties {
+  NewAddress: FormatDataType;
+  PayerType: PayerType;
+  PaymentMethod: PaymentMethods;
+  CargoType: CargoType;
+  VolumeGeneral?: string;
+  Weight: string;
+  ServiceType: DeliveryType;
+  SeatsAmount?: string;
+  Description: string;
+  Cost: string;
+  CitySender: string;
+  Sender: string;
+  SenderAddress: string;
+  ContactSender: string;
+  SendersPhone: string;
+  RecipientCityName: string;
+  RecipientArea: string;
+  RecipientAreaRegions: string;
+  RecipientAddressName: string;
+  RecipientHouse: string;
+  RecipientFlat: string;
+  RecipientName: string;
+  RecipientType: string;
+  RecipientsPhone: string;
+  DateTime: string;
+}
+
+export interface CreateSimpleDocumentProperties {
+  PayerType: PayerType;
+  PaymentMethod: PaymentMethods;
+  DateTime: string;
+  CargoType: CargoType;
+  VolumeGeneral?: string;
+  Weight: string;
+  ServiceType: DeliveryType;
+  SeatsAmount: string;
+  Description: string;
+  Cost: string;
+  CitySender: string;
+  Sender: string;
+  SenderAddress: string;
+  ContactSender: string;
+  SendersPhone: string;
+  CityRecipient: string;
+  Recipient: string;
+  RecipientAddress: string;
+  ContactRecipient: string;
+  RecipientsPhone: string;
+}
+
+export interface CreatePostomatDocumentProperties {
+  PayerType: PayerType;
+  PaymentMethod: PaymentMethods;
+  DateTime: string;
+  CargoType: CargoType;
+  OptionsSeat?: (OptionsSeatEntity)[] | null;
+  ServiceType: DeliveryType;
+  SeatsAmount: string;
+  Description: string;
+  Cost: string;
+  CitySender?: string;
+  Sender?: string;
+  SenderAddress: string;
+  ContactSender: string;
+  SendersPhone: string;
+  CityRecipient: string;
+  Recipient: string;
+  RecipientAddress?: string;
+  ContactRecipient: string;
+  RecipientsPhone: string;
+}
+
+export interface OptionsSeatEntity {
+  volumetricVolume: string;
+  volumetricWidth: string;
+  volumetricLength: string;
+  volumetricHeight: string;
+  weight: string;
+}
+
+export interface CreatePostomatDocumentResponse {
+  Ref: string;
+  CostOnSite: number;
+  EstimatedDeliveryDate: string;
+  IntDocNumber: string;
+  TypeDocument: string;
+  RegionCode: string;
+  RegionCity: string;
+}
+
+export interface CreateRedeliveryDocumentProperties {
+  PayerType: string;
+  PaymentMethod: string;
+  DateTime: string;
+  CargoType: string;
+  VolumeGeneral: string;
+  Weight: string;
+  ServiceType: string;
+  SeatsAmount: string;
+  Description: string;
+  Cost: string;
+  CitySender: string;
+  Sender: string;
+  SenderAddress: string;
+  ContactSender: string;
+  SendersPhone: string;
+  CityRecipient: string;
+  Recipient: string;
+  RecipientAddress: string;
+  ContactRecipient: string;
+  RecipientsPhone: string;
+  BackwardDeliveryData: RedeliveryData[];
+}
+export interface RedeliveryData {
+  PayerType: string;
+  CargoType: string;
+  Services: RedeliveryServices;
+}
+export interface RedeliveryServices {
+  Attorney: boolean;
+  WaybillNewPostWithStamp: boolean;
+  UserActions: string;
+}
+
+export type CreateDocumentProperties = (CreateFullInfoDocumentProperties | CreateSimpleDocumentProperties | CreatePostomatDocumentProperties | CreateRedeliveryDocumentProperties);
+
+export interface CreateDocumentResponse {
+  Ref: string;
+  CostOnSite: number;
+  EstimatedDeliveryDate: string;
+  IntDocNumber: string;
+  TypeDocument: string;
+}
+
+export interface DeleteDocumentProperties {
+  DocumentRefs: string;
+}
+
+export interface DeleteDocumentResponse {
+  Ref: string;
+}
+
+export interface GenerateReportProperties {
+  DocumentsRefs: string[];
+  Type: ReportType;
+}
+
+export interface GenerateReportResponse {
+  DateTime: string;
+  PreferredDeliveryDate: string;
+  Weight: string;
+  SeatsAmount: string;
+  IntDocNumber: string;
+  CitySender: string;
+  CityRecipient: string;
+  State: string;
+  SenderAddress: string;
+  RecipientAddress: string;
+  CostOnSite: string;
+  PayerType: PayerType;
+  PaymentMethod: PaymentMethods;
+  AfterpaymentOnGoodCost: string;
+  PackingNUmber: string;
 }

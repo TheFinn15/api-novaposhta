@@ -1,9 +1,9 @@
 import axios, { Method } from 'axios';
-import { ApiMethodType, ApiRequestBody, ApiRequestOptions, ApiResponseBody, ModelType } from '../types';
+import { ApiMethodType, ApiRequestBody, ApiRequestOptions, ApiResponseBody, FormatResponse, ModelType } from '../types';
 import { ApiInformer } from './informer';
 
 export class ApiMiddleware {
-  constructor(private formatData: 'json' | 'xml' = 'json', private apiUrl: string) {}
+  constructor(private formatData: FormatResponse, private apiUrl: string, private apiKey: string) {}
 
   async getRequest<T>(method: Method, data: ApiRequestBody<any>) {
     const url = `${this.apiUrl}${this.formatData}/`;
@@ -11,10 +11,9 @@ export class ApiMiddleware {
     return await axios({
       method,
       url,
-      data: data,
+      data,
     }).then((resp) => {
-      const respBody = resp.data as ApiResponseBody<T>;
-      return new ApiInformer(respBody).getApiResponse<T>();
+      return new ApiInformer(resp.data as ApiResponseBody<T>).getApiResponse<T>();
     });
   }
 
@@ -25,7 +24,7 @@ export class ApiMiddleware {
     system?: string,
   ): ApiRequestBody<any> {
     return {
-      apiKey: process.env.API_KEY as string,
+      apiKey: this.apiKey,
       modelName: model,
       system: system,
       calledMethod: methodName,
