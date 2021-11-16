@@ -1,6 +1,9 @@
 import { FormatResponse, InitOptions } from '../types';
 import { ApiMiddleware } from '../middleware';
 
+/*
+ * Class for build controllers in api
+ * */
 export abstract class BaseApi {
   protected readonly apiUrl: string = 'https://api.novaposhta.ua/v2.0/';
 

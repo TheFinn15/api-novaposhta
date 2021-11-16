@@ -3,18 +3,24 @@ import { AddressApiMethodType, AddressModelType } from './address';
 import { DocumentApiMethodType, DocumentModelType } from './document';
 import { CommonApiMethodType, CommonModelType } from './common';
 import { CounterpartyApiMethodType, CounterpartyModelType } from './counterparty';
+import { RegistryApiMethodType, RegistryModelType } from './registry';
+import { ServiceApiMethodType, ServiceModelType } from './service';
 
 export type ModelType =
   | AddressModelType
   | DocumentModelType
   | CommonModelType
-  | CounterpartyModelType;
+  | CounterpartyModelType
+  | RegistryModelType
+  | ServiceModelType;
 
 export type ApiMethodType =
   | AddressApiMethodType
   | DocumentApiMethodType
   | CommonApiMethodType
-  | CounterpartyApiMethodType;
+  | CounterpartyApiMethodType
+  | RegistryApiMethodType
+  | ServiceApiMethodType;
 
 export type ApiInformingType = 'error' | 'warning' | 'info' | null;
 
@@ -26,7 +32,7 @@ export interface ApiInformingOptions {
 }
 
 export interface ApiRequestBody<T> {
-  apiKey: string;
+  apiKey?: string;
   modelName: ModelType;
   system?: string;
   calledMethod: ApiMethodType;

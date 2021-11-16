@@ -1,4 +1,4 @@
-import { CounterpartyType, PayerType } from './document.enum';
+import { CounterpartyType, PayerType } from './enum/document.enum';
 import { ApiResponseBody } from './index';
 
 export type CounterpartyApiMethodType =

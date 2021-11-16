@@ -12,7 +12,7 @@ import { ApiInformer } from './informer';
 export class ApiMiddleware {
   constructor(private formatData: FormatResponse, private apiUrl: string, private apiKey: string) {}
 
-  private async getRequest<T>(method: Method, data: ApiRequestBody<any>) {
+  private async sendRequest<T>(method: Method, data: ApiRequestBody<any>) {
     const url = `${this.apiUrl}${this.formatData}/`;
 
     return await axios({
@@ -44,6 +44,6 @@ export class ApiMiddleware {
 
     const data = this.getRequestData<D>(model, apiMethod, additionalOpts, nameSystem);
 
-    return await this.getRequest<T>(requestMethod, data);
+    return await this.sendRequest<T>(requestMethod, data);
   }
 }

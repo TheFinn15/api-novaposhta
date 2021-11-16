@@ -8,7 +8,7 @@ import {
   CounterpartyType,
   PayerType,
   DocumentFullList,
-} from './document.enum';
+} from './enum/document.enum';
 import { ReportType } from './index';
 
 export type DocumentModelType = 'InternetDocument' | 'TrackingDocument' | 'TrackingDocumentGeneral';

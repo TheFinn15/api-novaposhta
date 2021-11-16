@@ -1,4 +1,4 @@
-import { CityType, CityTypeCode, CityTypeRu, StreetType } from './address.enum';
+import { CityType, CityTypeCode, CityTypeRu, StreetType } from './enum/address.enum';
 
 export type AddressModelType = 'Address' | 'AddressGeneral';
 
