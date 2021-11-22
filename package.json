@@ -1,19 +1,20 @@
 {
   "name": "api-novaposhta",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "Library for simple using API NovaPoshta",
   "main": "dist/main.js",
-  "author": "TheFinn <timlavr87@gmail.com>",
+  "author": "Timur Lavrentsov <timlavr87@gmail.com>",
   "files": [
     "types/**/*.ts",
     "middleware/*.ts",
     "api/**/*.ts"
   ],
+  "types": "typings/",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:TheFinn15/api-novaposhta.git"
   },
-  "license": "ISC",
   "scripts": {
     "test": "jest -u",
     "start": "tsc && node .",
