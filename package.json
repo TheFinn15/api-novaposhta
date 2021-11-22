@@ -1,16 +1,24 @@
 {
   "name": "api-novaposhta",
   "version": "1.0.0",
-  "description": "",
+  "description": "Library for simple using API NovaPoshta",
   "main": "dist/main.js",
+  "author": "TheFinn <timlavr87@gmail.com>",
+  "files": [
+    "types/**/*.ts",
+    "middleware/*.ts",
+    "api/**/*.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:TheFinn15/api-novaposhta.git"
+  },
+  "license": "ISC",
   "scripts": {
     "test": "jest -u",
     "start": "tsc && node .",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,scss,css,json}\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
     "typescript": "^4.4.4"
@@ -34,5 +42,11 @@
     "prettier": "^2.4.1",
     "ts-jest": "^27.0.7",
     "tslib": "^2.3.1"
-  }
+  },
+  "keywords": [
+    "api",
+    "novaposhta api",
+    "novaposhta",
+    "novaposhta library"
+  ]
 }
