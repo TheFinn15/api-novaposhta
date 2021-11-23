@@ -95,7 +95,7 @@ export default class ApiDocument extends BaseApi {
     });
   }
 
-  async getTrackingParcel(opts: DocumentMethodProperties) {
+  async getStatusDocuments(opts: DocumentMethodProperties) {
     return await this.config.generateRequest<TrackingDocumentResponse, DocumentMethodProperties>({
       model: 'TrackingDocument',
       apiMethod: 'getStatusDocuments',

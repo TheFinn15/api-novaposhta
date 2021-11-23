@@ -1,23 +1,23 @@
 export enum CityTypeRu {
-  Village = 'село',
-  City = 'город',
-  Settlement = 'пгт',
+  Village = 'selo',
+  City = 'gorod',
+  Settlement = 'pgt',
 }
 
 export enum CityType {
-  Village = 'село',
-  City = 'місто',
-  Settlement = 'пгт',
+  Village = 'selo',
+  City = 'misto',
+  Settlement = 'pgt',
 }
 
 export enum CityTypeCode {
-  City = 'м.',
-  Village = 'с.',
+  City = 'm.',
+  Village = 's.',
 }
 
 export enum StreetType {
-  Street = 'вул.',
-  Boulevard = 'бул.',
-  Avenue = 'просп.',
-  HighWay = 'шосе',
+  Street = 'vul.',
+  Boulevard = 'bul.',
+  Avenue = 'prosp.',
+  HighWay = 'shose',
 }
