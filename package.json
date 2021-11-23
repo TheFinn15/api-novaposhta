@@ -1,6 +1,6 @@
 {
   "name": "api-novaposhta",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "license": "MIT",
   "description": "Library for simple using API NovaPoshta",
   "main": "dist/main.js",
