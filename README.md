@@ -2,7 +2,20 @@
 # API NovaPoshta
 👀 Provides easy access to api novaposhta. API has 6 controllers which is got from [Official Documentation](https://devcenter.novaposhta.ua/docs/services/).  Also each of controller has own methods that are listed below.
 
-## Setup
+## 📖 Table of Contents
+- [Setup](#setup)
+- [Controllers](#controllers)
+- [Methods for controllers](#methods)
+	- [Internet Document](#internet-document)
+	- [Address](#address)
+	- [Counterparty](#counterparty)
+	- [Common](#common)
+	- [Service](#service)
+	- [Registry](#registry)
+- [Examples](#examples)
+	- [Base of using controllers](#base-using)
+
+## 🧰 Setup <a name="setup"/>
 Installing by npm
 ```shellscript
 npm install api-novapostha
@@ -12,7 +25,7 @@ Installing by yarn
 yarn add api-novaposhta
 ```
 
-## 🕹 Controllers
+## 🕹 Controllers <a name="controllers"/>
 + 📦 [Internet Document](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e) - methods for receiving information about waybills.
 + 🏡 [Address](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43) - it's help you work with addresses of counterparty, cities or streets where has novaposhta.
 + 🥸 [Counterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d) - easy way to control counterparty in account.
@@ -23,9 +36,9 @@ yarn add api-novaposhta
    + [Change Information](https://devcenter.novaposhta.ua/docs/services/59eef733ff2c200ce4f6f904)
 + 🗃 [Registry](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e) - better way to working with internet document in registry.
 
-## ⛓ Methods
+## ⛓ Methods <a name="methods"/>
 > 🔒 Designation that you need an api key for a method or controller
-1. **Internet Document** 🔒
+1. **Internet Document** 🔒 <a name="internet-document"/>
    - getListDocument - get list of internet document in account
    - getParcelDeliveryDate - get forecast about delivery date
    - getParcelPrice - get parcel price from entered params
@@ -36,7 +49,7 @@ yarn add api-novaposhta
    - getStatusDocuments - get status of internet document(s)
    - getTrackingInfo - get tracking information about internet document
    - getTrackingHistory - get tracking history where the parcel passed
-2. **Address**
+2. **Address** <a name="address"/>
    - 🔒 getSettlements - get settlements where has novaposhta
    - 🔒 getAreas - get areas by params in Ukraine
    - 🔒 getCities - same as getAreas but for cities
@@ -47,7 +60,7 @@ yarn add api-novaposhta
    - 🔒 deleteContractorAddress - delete counterparty address
    - 🔒 createContractorAddress - create counterparty address
    - 🔒 updateContractorAddress - update existed counterparty address
-3. **Counterparty** 🔒
+3. **Counterparty** 🔒 <a name="counterparty"/>
    - getCounterpartyAddresses - get counterparty addresses in account
    - getCounterpartyOptions - get options for create internet document with additional service
    - getCounterpartyContactPerson - get contacts of counterparty in account
@@ -60,7 +73,7 @@ yarn add api-novaposhta
    - createThirdPersonCounterparty - create counterparty for third person
    - deleteContactPerson - delete contact for counterparty
    - deleteCounterparty - delete counterparty
-4. **Common**
+4. **Common** <a name="common"/>
    - getTimeIntervals - get time intervals for service time intervals in internet document
    - 🔒 getCargoTypes - get types of cargo for create internet document
    - 🔒 getBackwardDeliveryCargoTypes - same as getCargoTypes but for service backward delivery
@@ -75,19 +88,19 @@ yarn add api-novaposhta
    - 🔒 getTypesOfCounterparties - get types of counterparties
    - 🔒 getPaymentForms - get types of payments
    - 🔒 getOwnershipFormsList - get list of ownership
-5. **Service** 🔒
+5. **Service** 🔒 <a name="service"/>
    - canCreateRequest - check possibility using one of services
    - createServiceRequest - create request to one of services
    - deleteServiceRequest - delete request one of services
    - getListServiceRequests - get list of services which is api provide
-6. **Registry** 🔒
+6. **Registry** 🔒 <a name="registry"/>
    - addDocumentToRegistry - add internet document to registry
    - getRegistryInfo - get all information about registry in account
    - getListRegistryInfo - same as getRegistryInfo but returns list
    - deleteRegistry - delete registry in account
    - deleteDocumentFromRegistry - delete internet document from registry
 
-## 📝 Examples
+## 📝 Examples <a name="examples"/>
 
 ### Options Base API
 ```json
@@ -97,7 +110,7 @@ yarn add api-novaposhta
   "formatResponse": "json or xml"
 }
 ```
-### Using API Controllers
+### Using API Controllers <a name="base-using"/>
 All controllers are accepted base api options. Example below is shown using for address api and get areas.
 ```ts
 const api = new ApiAddress({  
