@@ -15,7 +15,7 @@ jspm_packages/
 coverage
 
 dist
-./typings
+typings
 
 .idea
 
