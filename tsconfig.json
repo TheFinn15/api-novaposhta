@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "baseUrl": "./",
     "outDir": "dist",
@@ -15,6 +15,7 @@
   },
   "exclude": [
     "tests",
-    "jest.config.ts"
+    "jest.config.ts",
+    "node_modules"
   ]
 }

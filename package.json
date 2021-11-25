@@ -7,7 +7,8 @@
   "files": [
     "middleware/*.ts",
     "api/**/*.ts",
-    "typings/**.d.ts"
+    "typings/**/*.d.ts",
+    "typings/**/*.d.ts.map"
   ],
   "types": "typings/",
   "repository": {
