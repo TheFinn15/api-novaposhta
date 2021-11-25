@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES2019",
     "composite": true,
     "module": "commonjs",
-    "moduleResolution": "node",
     "baseUrl": "./",
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "typings/",
+    "declarationMap": true,
+    "tsBuildInfoFile": "typings/tsconfig.tsbuildinfo",
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "tests",
