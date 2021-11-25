@@ -7,8 +7,8 @@ import {
   InfoRegistryProperties,
   InfoRegistryResponse,
   ListRegistryResponse,
-} from '../../types/registry';
-import { DeleteDocumentProperties, DeleteDocumentResponse } from '../../types/document';
+} from '../types/registry';
+import { DeleteDocumentProperties, DeleteDocumentResponse } from '../types/document';
 
 /*
  * API class for help working with registry.

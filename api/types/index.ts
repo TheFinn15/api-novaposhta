@@ -26,6 +26,8 @@ export type ApiInformingType = 'error' | 'warning' | 'info' | null;
 
 export type ReportType = 'xls' | 'csv';
 
+export type Class<T> = { new(...args: InitOptions[]): T; };
+
 export interface ApiInformingOptions {
   descriptions: string[];
   codes: string[];

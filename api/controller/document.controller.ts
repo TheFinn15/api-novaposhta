@@ -19,7 +19,7 @@ import {
   ParcelPriceProperties,
   ParcelPriceResponse,
   TrackingDocumentResponse,
-} from '../../types/document';
+} from '../types/document';
 import { BaseApi } from '../base';
 
 /*

@@ -1,4 +1,4 @@
-import { FormatResponse, InitOptions } from '../types';
+import { FormatResponse, InitOptions } from './types';
 import { ApiMiddleware } from '../middleware';
 
 /*

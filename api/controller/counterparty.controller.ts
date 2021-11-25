@@ -1,5 +1,5 @@
 import { BaseApi } from '../base';
-import { DescriptionResponse } from '../../types/common';
+import { DescriptionResponse } from '../types/common';
 import {
   ContactPersonsProperties,
   ContactPersonsResponse,
@@ -20,7 +20,7 @@ import {
   EditContactPersonResponse,
   EditCounterpartyProperties,
   EditCounterpartyResponse,
-} from '../../types/counterparty';
+} from '../types/counterparty';
 
 /*
  * API class for help working with counterparties

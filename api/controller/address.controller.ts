@@ -16,7 +16,7 @@ import {
   ApiWarehouseResponse,
   ApiWarehouseStreetProperties,
   ApiWarehouseStreetResponse,
-} from '../../types/address';
+} from '../types/address';
 import { BaseApi } from '../base';
 
 /*

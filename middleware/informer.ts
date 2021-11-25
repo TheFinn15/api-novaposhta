@@ -4,7 +4,7 @@ import {
   ApiResponseBody,
   InformerCheckWarnings,
   InformerResponse,
-} from '../types';
+} from '../api/types';
 
 export class ApiInformer {
   private readonly rawResponse: ApiResponseBody<any>;

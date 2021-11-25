@@ -3,14 +3,12 @@
   "version": "1.0.3",
   "license": "MIT",
   "description": "Library for simple using API NovaPoshta",
-  "main": "dist/main.js",
   "author": "Timur Lavrentsov <timlavr87@gmail.com>",
   "files": [
-    "types/**/*.ts",
+    "api/types/**/*.ts",
     "middleware/*.ts",
     "api/**/*.ts",
-    "typings/**.d.ts",
-    "typings/**.d.ts.map"
+    "typings/**.d.ts"
   ],
   "types": "typings/",
   "repository": {

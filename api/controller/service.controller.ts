@@ -11,7 +11,7 @@ import {
   ListRequestOptions,
   ListRequestResponse,
   ServiceModelType,
-} from '../../types/service';
+} from '../types/service';
 
 /*
  * API class for help working with services.

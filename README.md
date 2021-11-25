@@ -6,14 +6,16 @@
 - [Setup](#setup)
 - [Controllers](#controllers)
 - [Methods for controllers](#methods)
-	- [Internet Document](#internet-document)
-	- [Address](#address)
-	- [Counterparty](#counterparty)
-	- [Common](#common)
-	- [Service](#service)
-	- [Registry](#registry)
+   - [Internet Document](#internet-document)
+   - [Address](#address)
+   - [Counterparty](#counterparty)
+   - [Common](#common)
+   - [Service](#service)
+   - [Registry](#registry)
 - [Examples](#examples)
-	- [Base of using controllers](#base-using)
+   - [Base of using controllers](#base-using)
+      - [Classic using](#classic)
+      - [Modern using](#modern)
 
 ## 🧰 Setup <a name="setup"/>
 Installing by npm
@@ -104,34 +106,45 @@ yarn add api-novaposhta
 
 ### Options Base API
 ```json
-{  
-  "apiKey": "<YOUR_API_KEY>",
-  "apiUrl": "<YOUR_API_URL>",
-  "formatResponse": "json or xml"
+{
+   "apiKey": "<YOUR_API_KEY>",
+   "apiUrl": "<YOUR_API_URL>",
+   "formatResponse": "json or xml"
 }
 ```
 ### Using API Controllers <a name="base-using"/>
-All controllers are accepted base api options. Example below is shown using for address api and get areas.
-```ts
-const api = new ApiAddress({  
-  apiKey: '<API_KEY>',  
-});
-```
-Some methods in api has options, in that nothing too hard, all options have types declared for better understanding and avoid mistake for using methods.
-
-*Using method without params*
-```ts
-const api = new ApiAddress({  
-  apiKey: '<API_KEY>',  
+All controllers are accepted base api options. Example below is shown using for address api and get areas method in two variants.
+#### Classic Variant <a name="classic"/>
+In this variant you can import and use each of one controllers as individual class with own methods.
+```ts  
+const api = new ApiAddress({
+   apiKey: '<API_KEY>',
 });
 await api.getAreas();
-```
-*Using method with params*
-```ts
-const api = new ApiAddress({  
-  apiKey: '<API_KEY>',  
+```  
+#### Modern Variant <a name="modern"/>
+But in this variant you don't need to import extra controllers, you only need a main controller and using method **get** with param as api controller class and after all, access to methods will be allowed.
+```ts  
+const api = new NovaPoshta({
+   apiKey: '<API_KEY>',
 });
-await api.getCities({  
-  FindByString: 'Kiev',  
+await api.get(ApiAddress).getAreas();
+```  
+Some methods in api has options, in that nothing too hard, all options have types declared for better understanding and avoid mistake for using methods.
+
+#### Using method without params
+```ts  
+const api = new ApiAddress({    
+  apiKey: '<API_KEY>',    
+});  
+await api.getAreas();  
+```  
+#### Using method with params
+```ts  
+const api = new NovaPoshta({
+   apiKey: '<API_KEY>',
 });
+await api.get(ApiAddress).getCities({
+   FindByString: 'Kiev',
+});  
 ```

@@ -10,7 +10,7 @@ import {
   TimeIntervalsProperties,
   TimeIntervalsResponse,
   TiresWheelsListResponse,
-} from '../../types/common';
+} from '../types/common';
 
 /*
  * API class for help working with reference books.

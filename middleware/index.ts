@@ -6,7 +6,7 @@ import {
   ApiResponseBody,
   FormatResponse,
   ModelType,
-} from '../types';
+} from '../api/types';
 import { ApiInformer } from './informer';
 
 export class ApiMiddleware {
