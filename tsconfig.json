@@ -1,20 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2019",
     "module": "commonjs",
     "baseUrl": "./",
-    "outDir": "dist",
+    "outDir": "lib/",
+    "rootDir": "src/",
     "declaration": true,
-    "declarationDir": "typings/",
-    "declarationMap": true,
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "strict": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
-    "tests",
+    "src/tests",
     "jest.config.ts",
     "node_modules"
   ]

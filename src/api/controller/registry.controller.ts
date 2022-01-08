@@ -13,7 +13,7 @@ import { DeleteDocumentProperties, DeleteDocumentResponse } from '../types/docum
 /*
  * API class for help working with registry.
  */
-export default class ApiRegistry extends BaseApi {
+export class ApiRegistry extends BaseApi {
   async addDocumentToRegistry(opts: CreateDocumentRegistryProperties) {
     return await this.config.generateRequest<
       CreateDocumentRegistryResponse,

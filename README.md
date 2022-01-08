@@ -20,7 +20,7 @@
 ## 🧰 Setup <a name="setup"/>
 Installing by npm
 ```shellscript
-npm install api-novapostha
+npm install api-novaposhta
 ```
 Installing by yarn
 ```shellscript

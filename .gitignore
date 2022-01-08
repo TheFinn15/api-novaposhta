@@ -7,8 +7,7 @@ yarn-error.log*
 node_modules/
 jspm_packages/
 
-dist
-typings
+lib
 
 .idea
 

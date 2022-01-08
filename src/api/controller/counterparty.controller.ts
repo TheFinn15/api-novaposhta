@@ -25,7 +25,7 @@ import {
 /*
  * API class for help working with counterparties
  */
-export default class ApiCounterparty extends BaseApi {
+export class ApiCounterparty extends BaseApi {
   async getCounterpartyAddresses(opts: CounterpartyAddressProperties) {
     return await this.config.generateRequest<DescriptionResponse, CounterpartyAddressProperties>({
       model: 'Counterparty',

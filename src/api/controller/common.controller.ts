@@ -15,7 +15,7 @@ import {
 /*
  * API class for help working with reference books.
  */
-export default class ApiCommon extends BaseApi {
+export class ApiCommon extends BaseApi {
   async getTimeIntervals(opts: TimeIntervalsProperties) {
     return await this.config.generateRequest<TimeIntervalsResponse, TimeIntervalsProperties>({
       model: 'Common',

@@ -22,7 +22,7 @@ import { BaseApi } from '../base';
 /*
  * API class for help working with addresses.
  */
-export default class ApiAddress extends BaseApi {
+export class ApiAddress extends BaseApi {
   async getSettlements(properties: ApiSettlementsProperties) {
     return await this.config.generateRequest<ApiSettlementsResponse, ApiSettlementsProperties>({
       model: 'AddressGeneral',

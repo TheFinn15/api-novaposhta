@@ -25,7 +25,7 @@ import { BaseApi } from '../base';
 /*
  * API class for help working with waybills.
  */
-export default class ApiDocument extends BaseApi {
+export class ApiDocument extends BaseApi {
   async getListDocument(opts?: DocumentMethodProperties) {
     return await this.config.generateRequest<ListDocumentResponse, DocumentMethodProperties>({
       model: 'InternetDocument',

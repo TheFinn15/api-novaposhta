@@ -16,7 +16,7 @@ import {
 /*
  * API class for help working with services.
  */
-export default class ApiService extends BaseApi {
+export class ApiService extends BaseApi {
   async canCreateRequest(
     opts: CanSendRequestOptions,
     method: CanSendRequestMethod,
